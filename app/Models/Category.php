@@ -36,11 +36,11 @@ class Category extends Model
     use HasFactory;
 
     public $table = 'categories';
-    
+
 
     protected $dates = ['deleted_at'];
 
-
+    //public $incrementing = false;
 
     public $fillable = [
         'name'
@@ -65,6 +65,6 @@ class Category extends Model
     ];
 
     public function products() {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 }

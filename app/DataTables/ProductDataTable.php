@@ -91,7 +91,7 @@ class ProductDataTable extends DataTable
         return [
             'name' => new Column(['title' => __('models/products.fields.name'), 'data' => 'name']),
             'price' => new Column(['title' => __('models/products.fields.price'), 'data' => 'price']),
-            'category_id' => new Column(['title' => __('models/products.fields.category_id'), 'data' => 'category_id','searchable' => false])
+            'brand_id' => new Column(['title' => __('models/products.fields.brand_id'), 'data' => 'brand_id'])
         ];
     }
 

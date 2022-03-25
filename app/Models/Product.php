@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * @SWG\Definition(
  *      definition="Product",
- *      required={"name", "price", "category_id"},
+ *      required={"name", "price", "brand_id"},
  *      @SWG\Property(
  *          property="name",
  *          description="name",
@@ -22,8 +22,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="category_id",
- *          description="category_id",
+ *          property="brand_id",
+ *          description="brand_id",
  *          type="integer",
  *          format="int32"
  *      ),
@@ -48,16 +48,16 @@ class Product extends Model
     use HasFactory;
 
     public $table = 'products';
-    
+
 
     protected $dates = ['deleted_at'];
 
-
+    //public $incrementing = false;
 
     public $fillable = [
         'name',
         'price',
-        'category_id'
+        'brand_id'
     ];
 
     /**
@@ -68,7 +68,7 @@ class Product extends Model
     protected $casts = [
         'name' => 'string',
         'price' => 'integer',
-        'category_id' => 'integer'
+        'brand_id' => 'integer'
     ];
 
     /**
@@ -77,12 +77,41 @@ class Product extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|string|min:2|max:50',
-        'price' => 'required|numeric',
-        'category_id' => 'required|exists:categories,id'
+        'name' => 'required|string|max:50',
+        'price' => 'required|numeric|gt:0',
+        'brand_id' => 'required|exists:brands,id'
     ];
 
-    public function category() {
-        return $this->belongsTo(Category::class);
+    public function orderProducts() {
+        return $this->hasMany(OrderProduct::class);
     }
+
+    public function shoppingCarts() {
+        return $this->hasMany(shoppingCart::class);
+    }
+
+    public function favourites() {
+        return $this->hasMany(Favourite::class);
+    }
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function features() {
+        return $this->belongsToMany(Features::class);
+    }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function brand() {
+        return $this->belongsTo(Brand::class);
+    }
+
 }

@@ -10,10 +10,10 @@
     <p>{{ $product->price }}</p>
 </div>
 
-<!-- Category Id Field -->
+<!-- Brand Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('category_id', __('models/products.fields.category_id').':') !!}
-    <p>{{ $product->category_id }}</p>
+    {!! Form::label('brand_id', __('models/products.fields.brand_id').':') !!}
+    <p>{{ $product->brand_id }}</p>
 </div>
 
 <!-- Created At Field -->

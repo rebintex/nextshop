@@ -24,6 +24,73 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('brands', App\Http\Controllers\API\BrandAPIController::class);
+});
+
+
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('products', App\Http\Controllers\API\ProductAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('orders', App\Http\Controllers\API\OrderAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('addresses', App\Http\Controllers\API\AddressAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('order_products', App\Http\Controllers\API\OrderProductAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('shopping_carts', App\Http\Controllers\API\shoppingCartAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('favourites', App\Http\Controllers\API\FavouriteAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('coupons', App\Http\Controllers\API\CouponAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('features', App\Http\Controllers\API\FeaturesAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('feature_values', App\Http\Controllers\API\FeatureValuesAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('comments', App\Http\Controllers\API\CommentAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('posts', App\Http\Controllers\API\PostAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('pages', App\Http\Controllers\API\PageAPIController::class);
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('tags', App\Http\Controllers\API\TagAPIController::class);
 });

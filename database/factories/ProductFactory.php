@@ -24,7 +24,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->word,
         'price' => $this->faker->randomDigitNotNull,
-        'category_id' => $this->faker->randomDigitNotNull,
+        'brand_id' => $this->faker->randomDigitNotNull,
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];
