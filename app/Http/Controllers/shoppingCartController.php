@@ -6,7 +6,7 @@ use App\DataTables\shoppingCartDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateshoppingCartRequest;
 use App\Http\Requests\UpdateshoppingCartRequest;
-use App\Models\shoppingCart;
+use App\Models\ShoppingCart;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -14,7 +14,7 @@ use Response;
 class shoppingCartController extends AppBaseController
 {
     /**
-     * Display a listing of the shoppingCart.
+     * Display a listing of the ShoppingCart.
      *
      * @param shoppingCartDataTable $shoppingCartDataTable
      *
@@ -26,7 +26,7 @@ class shoppingCartController extends AppBaseController
     }
 
     /**
-     * Show the form for creating a new shoppingCart.
+     * Show the form for creating a new ShoppingCart.
      *
      * @return Response
      */
@@ -36,7 +36,7 @@ class shoppingCartController extends AppBaseController
     }
 
     /**
-     * Store a newly created shoppingCart in storage.
+     * Store a newly created ShoppingCart in storage.
      *
      * @param CreateshoppingCartRequest $request
      *
@@ -46,8 +46,8 @@ class shoppingCartController extends AppBaseController
     {
         $input = $request->all();
 
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::create($input);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::create($input);
 
         Flash::success(__('messages.saved', ['model' => __('models/shoppingCarts.singular')]));
 
@@ -55,7 +55,7 @@ class shoppingCartController extends AppBaseController
     }
 
     /**
-     * Display the specified shoppingCart.
+     * Display the specified ShoppingCart.
      *
      * @param int $id
      *
@@ -63,8 +63,8 @@ class shoppingCartController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::find($id);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::find($id);
 
         if (empty($shoppingCart)) {
             Flash::error(__('models/shoppingCarts.singular').' '.__('messages.not_found'));
@@ -72,11 +72,11 @@ class shoppingCartController extends AppBaseController
             return redirect(route('admin.shoppingCarts.index'));
         }
 
-        return view('admin.shopping_carts.show')->with('shoppingCart', $shoppingCart);
+        return view('admin.shopping_carts.show')->with('ShoppingCart', $shoppingCart);
     }
 
     /**
-     * Show the form for editing the specified shoppingCart.
+     * Show the form for editing the specified ShoppingCart.
      *
      * @param int $id
      *
@@ -84,8 +84,8 @@ class shoppingCartController extends AppBaseController
      */
     public function edit($id)
     {
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::find($id);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::find($id);
 
         if (empty($shoppingCart)) {
             Flash::error(__('messages.not_found', ['model' => __('models/shoppingCarts.singular')]));
@@ -93,11 +93,11 @@ class shoppingCartController extends AppBaseController
             return redirect(route('admin.shoppingCarts.index'));
         }
 
-        return view('admin.shopping_carts.edit')->with('shoppingCart', $shoppingCart);
+        return view('admin.shopping_carts.edit')->with('ShoppingCart', $shoppingCart);
     }
 
     /**
-     * Update the specified shoppingCart in storage.
+     * Update the specified ShoppingCart in storage.
      *
      * @param int $id
      * @param UpdateshoppingCartRequest $request
@@ -106,8 +106,8 @@ class shoppingCartController extends AppBaseController
      */
     public function update($id, UpdateshoppingCartRequest $request)
     {
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::find($id);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::find($id);
 
         if (empty($shoppingCart)) {
             Flash::error(__('messages.not_found', ['model' => __('models/shoppingCarts.singular')]));
@@ -124,7 +124,7 @@ class shoppingCartController extends AppBaseController
     }
 
     /**
-     * Remove the specified shoppingCart from storage.
+     * Remove the specified ShoppingCart from storage.
      *
      * @param int $id
      *
@@ -134,8 +134,8 @@ class shoppingCartController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::find($id);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::find($id);
 
         if (empty($shoppingCart)) {
             Flash::error(__('messages.not_found', ['model' => __('models/shoppingCarts.singular')]));

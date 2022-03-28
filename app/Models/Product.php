@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -87,7 +87,7 @@ class Product extends Model
     }
 
     public function shoppingCarts() {
-        return $this->hasMany(shoppingCart::class);
+        return $this->hasMany(ShoppingCart::class);
     }
 
     public function favourites() {
@@ -98,8 +98,8 @@ class Product extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function features() {
-        return $this->belongsToMany(Features::class);
+    public function featureValues() {
+        return $this->belongsToMany(FeatureValues::class, 'feature_value_product', 'product_id','feature_value_id');
     }
 
     public function categories() {
@@ -107,11 +107,14 @@ class Product extends Model
     }
 
     public function comments() {
-        return $this->hasMany(Comment::class);
+        return $this->morphMany(Comment::class, 'owner');
     }
 
     public function brand() {
         return $this->belongsTo(Brand::class);
     }
 
+    public function orders() {
+        return $this->belongsToMany(Order::class);
+    }
 }

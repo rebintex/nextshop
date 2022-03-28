@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -62,8 +62,8 @@ class Comment extends Model
     public $fillable = [
         'title',
         'content',
+        'rating',
         'user_id',
-        'product_id'
     ];
 
     /**
@@ -87,15 +87,14 @@ class Comment extends Model
         'title' => 'required|string|max:30',
         'content' => 'required|string|min:25',
         'user_id' => 'required|exists:users,id',
-        'product_id' => 'required|exists:products,id'
-    ];
+4    ];
 
     public function user() {
         return $this->belongsTo(User::class);
     }
 
-    public function product() {
-        return $this->belongsTo(Product::class);
+    public function owner() {
+        return $this->morphTo();
     }
 
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateshoppingCartAPIRequest;
 use App\Http\Requests\API\UpdateshoppingCartAPIRequest;
-use App\Models\shoppingCart;
+use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Resources\shoppingCartResource;
@@ -24,7 +24,7 @@ class shoppingCartAPIController extends AppBaseController
      * @SWG\Get(
      *      path="/shoppingCarts",
      *      summary="Get a listing of the shoppingCarts.",
-     *      tags={"shoppingCart"},
+     *      tags={"ShoppingCart"},
      *      description="Get all shoppingCarts",
      *      produces={"application/json"},
      *      @SWG\Response(
@@ -39,7 +39,7 @@ class shoppingCartAPIController extends AppBaseController
      *              @SWG\Property(
      *                  property="data",
      *                  type="array",
-     *                  @SWG\Items(ref="#/definitions/shoppingCart")
+     *                  @SWG\Items(ref="#/definitions/ShoppingCart")
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -51,7 +51,7 @@ class shoppingCartAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = shoppingCart::query();
+        $query = ShoppingCart::query();
 
         if ($request->get('skip')) {
             $query->skip($request->get('skip'));
@@ -74,16 +74,16 @@ class shoppingCartAPIController extends AppBaseController
      *
      * @SWG\Post(
      *      path="/shoppingCarts",
-     *      summary="Store a newly created shoppingCart in storage",
-     *      tags={"shoppingCart"},
-     *      description="Store shoppingCart",
+     *      summary="Store a newly created ShoppingCart in storage",
+     *      tags={"ShoppingCart"},
+     *      description="Store ShoppingCart",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="shoppingCart that should be stored",
+     *          description="ShoppingCart that should be stored",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/shoppingCart")
+     *          @SWG\Schema(ref="#/definitions/ShoppingCart")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -96,7 +96,7 @@ class shoppingCartAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/shoppingCart"
+     *                  ref="#/definitions/ShoppingCart"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -110,8 +110,8 @@ class shoppingCartAPIController extends AppBaseController
     {
         $input = $request->all();
 
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::create($input);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::create($input);
 
         return $this->sendResponse(
              new shoppingCartResource($shoppingCart),
@@ -125,13 +125,13 @@ class shoppingCartAPIController extends AppBaseController
      *
      * @SWG\Get(
      *      path="/shoppingCarts/{id}",
-     *      summary="Display the specified shoppingCart",
-     *      tags={"shoppingCart"},
-     *      description="Get shoppingCart",
+     *      summary="Display the specified ShoppingCart",
+     *      tags={"ShoppingCart"},
+     *      description="Get ShoppingCart",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of shoppingCart",
+     *          description="id of ShoppingCart",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -147,7 +147,7 @@ class shoppingCartAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/shoppingCart"
+     *                  ref="#/definitions/ShoppingCart"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -159,8 +159,8 @@ class shoppingCartAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::find($id);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::find($id);
 
         if (empty($shoppingCart)) {
             return $this->sendError(
@@ -181,13 +181,13 @@ class shoppingCartAPIController extends AppBaseController
      *
      * @SWG\Put(
      *      path="/shoppingCarts/{id}",
-     *      summary="Update the specified shoppingCart in storage",
-     *      tags={"shoppingCart"},
-     *      description="Update shoppingCart",
+     *      summary="Update the specified ShoppingCart in storage",
+     *      tags={"ShoppingCart"},
+     *      description="Update ShoppingCart",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of shoppingCart",
+     *          description="id of ShoppingCart",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -195,9 +195,9 @@ class shoppingCartAPIController extends AppBaseController
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="shoppingCart that should be updated",
+     *          description="ShoppingCart that should be updated",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/shoppingCart")
+     *          @SWG\Schema(ref="#/definitions/ShoppingCart")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -210,7 +210,7 @@ class shoppingCartAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/shoppingCart"
+     *                  ref="#/definitions/ShoppingCart"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -222,8 +222,8 @@ class shoppingCartAPIController extends AppBaseController
      */
     public function update($id, UpdateshoppingCartAPIRequest $request)
     {
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::find($id);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::find($id);
 
         if (empty($shoppingCart)) {
            return $this->sendError(
@@ -246,13 +246,13 @@ class shoppingCartAPIController extends AppBaseController
      *
      * @SWG\Delete(
      *      path="/shoppingCarts/{id}",
-     *      summary="Remove the specified shoppingCart from storage",
-     *      tags={"shoppingCart"},
-     *      description="Delete shoppingCart",
+     *      summary="Remove the specified ShoppingCart from storage",
+     *      tags={"ShoppingCart"},
+     *      description="Delete ShoppingCart",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of shoppingCart",
+     *          description="id of ShoppingCart",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -280,8 +280,8 @@ class shoppingCartAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var shoppingCart $shoppingCart */
-        $shoppingCart = shoppingCart::find($id);
+        /** @var ShoppingCart $shoppingCart */
+        $shoppingCart = ShoppingCart::find($id);
 
         if (empty($shoppingCart)) {
            return $this->sendError(

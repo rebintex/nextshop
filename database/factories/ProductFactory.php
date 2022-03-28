@@ -22,9 +22,9 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word,
-        'price' => $this->faker->randomDigitNotNull,
-        'brand_id' => $this->faker->randomDigitNotNull,
+            'name' => 'drsfg',
+        'price' => 12131,
+        'brand_id' => 1,
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

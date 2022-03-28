@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\shoppingCart;
+use App\Models\ShoppingCart;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
@@ -25,10 +25,10 @@ class shoppingCartDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\shoppingCart $model
+     * @param \App\Models\ShoppingCart $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(shoppingCart $model)
+    public function query(ShoppingCart $model)
     {
         return $model->newQuery();
     }

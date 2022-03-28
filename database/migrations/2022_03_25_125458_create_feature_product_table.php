@@ -13,10 +13,10 @@ class CreateFeatureProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('feature_product', function (Blueprint $table) {
-            $table->foreignId('feature_id');
+        Schema::create('feature_value_product', function (Blueprint $table) {
+            $table->foreignId('feature_value_id');
             $table->foreignId('product_id');
-            $table->primary(['feature_id', 'product_id']);
+            $table->primary(['feature_value_id', 'product_id']);
         });
     }
 

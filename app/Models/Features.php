@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -66,9 +66,5 @@ class Features extends Model
 
     public function featureValues() {
         return $this->hasMany(FeatureValues::class);
-    }
-
-    public function products() {
-        return $this->belongsToMany(Product::class);
     }
 }

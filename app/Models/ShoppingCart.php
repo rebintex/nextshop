@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @SWG\Definition(
- *      definition="shoppingCart",
+ *      definition="ShoppingCart",
  *      required={"quantity", "product_id", "user_id"},
  *      @SWG\Property(
  *          property="quantity",
@@ -42,7 +42,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *      )
  * )
  */
-class shoppingCart extends Model
+class ShoppingCart extends Model
 {
     use SoftDeletes;
 

@@ -47,11 +47,11 @@ class User extends Authenticatable
     }
 
     public function shoppingCarts() {
-        return $this->hasMany(shoppingCart::class);
+        return $this->hasMany(ShoppingCart::class);
     }
 
     public function favourites() {
-        return $this->hasMany(Favourite::class);
+        return $this->belongsToMany(Favourite::class);
     }
 
     public function addresses() {

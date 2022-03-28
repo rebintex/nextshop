@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\shoppingCart;
+use App\Models\ShoppingCart;
 
 class CreateshoppingCartRequest extends FormRequest
 {
@@ -24,6 +24,6 @@ class CreateshoppingCartRequest extends FormRequest
      */
     public function rules()
     {
-        return shoppingCart::$rules;
+        return ShoppingCart::$rules;
     }
 }

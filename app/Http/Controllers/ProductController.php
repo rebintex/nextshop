@@ -6,6 +6,7 @@ use App\DataTables\ProductDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Flash;
 use App\Http\Controllers\AppBaseController;
@@ -22,6 +23,16 @@ class ProductController extends AppBaseController
      */
     public function index(ProductDataTable $productDataTable)
     {
+        $products = Product::query()
+            ->select(['id','name'])
+            ->whereHas('categories', function ($query) {
+                $query->where('active', 0);
+            })
+            ->with(['categories' => function ($query) {
+                $query->select(['id', 'name']);
+            }])
+            ->get();
+//        $products = Product::query()->with(['featureValues.feature'])->get();
         return $productDataTable->render('admin.products.index');
     }
 

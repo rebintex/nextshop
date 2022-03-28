@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\API;
 
-use App\Models\shoppingCart;
+use App\Models\ShoppingCart;
 use InfyOm\Generator\Request\APIRequest;
 
 class UpdateshoppingCartAPIRequest extends APIRequest
@@ -24,7 +24,7 @@ class UpdateshoppingCartAPIRequest extends APIRequest
      */
     public function rules()
     {
-        $rules = shoppingCart::$rules;
+        $rules = ShoppingCart::$rules;
         
         return $rules;
     }

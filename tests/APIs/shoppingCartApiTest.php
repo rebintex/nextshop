@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use Tests\ApiTestTrait;
-use App\Models\shoppingCart;
+use App\Models\ShoppingCart;
 
 class shoppingCartApiTest extends TestCase
 {
@@ -15,7 +15,7 @@ class shoppingCartApiTest extends TestCase
      */
     public function test_create_shopping_cart()
     {
-        $shoppingCart = shoppingCart::factory()->make()->toArray();
+        $shoppingCart = ShoppingCart::factory()->make()->toArray();
 
         $this->response = $this->json(
             'POST',
@@ -30,7 +30,7 @@ class shoppingCartApiTest extends TestCase
      */
     public function test_read_shopping_cart()
     {
-        $shoppingCart = shoppingCart::factory()->create();
+        $shoppingCart = ShoppingCart::factory()->create();
 
         $this->response = $this->json(
             'GET',
@@ -45,8 +45,8 @@ class shoppingCartApiTest extends TestCase
      */
     public function test_update_shopping_cart()
     {
-        $shoppingCart = shoppingCart::factory()->create();
-        $editedshoppingCart = shoppingCart::factory()->make()->toArray();
+        $shoppingCart = ShoppingCart::factory()->create();
+        $editedshoppingCart = ShoppingCart::factory()->make()->toArray();
 
         $this->response = $this->json(
             'PUT',
@@ -62,7 +62,7 @@ class shoppingCartApiTest extends TestCase
      */
     public function test_delete_shopping_cart()
     {
-        $shoppingCart = shoppingCart::factory()->create();
+        $shoppingCart = ShoppingCart::factory()->create();
 
         $this->response = $this->json(
             'DELETE',

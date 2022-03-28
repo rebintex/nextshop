@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\shoppingCart;
+use App\Models\ShoppingCart;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class shoppingCartFactory extends Factory
@@ -12,7 +12,7 @@ class shoppingCartFactory extends Factory
      *
      * @var string
      */
-    protected $model = shoppingCart::class;
+    protected $model = ShoppingCart::class;
 
     /**
      * Define the model's default state.

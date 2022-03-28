@@ -14,6 +14,7 @@
         "infyomlabs/swagger-generator": "dev-master",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
+        "laravel/telescope": "^4.8",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "laravelcollective/html": "^6.2",
@@ -23,6 +24,8 @@
     },
     "require-dev": {
         "appointer/swaggervel": "dev-master",
+        "barryvdh/laravel-debugbar": "^3.6",
+        "beyondcode/laravel-query-detector": "^1.6",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
@@ -59,7 +62,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "config": {
@@ -74,5 +79,6 @@
             "type": "vcs",
             "url":  "git@github.com:InfyOmLabs/swaggervel.git"
         }
-    ]
+    ],
+
 }

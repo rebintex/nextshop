@@ -20,11 +20,11 @@ class CreateCommentsTable extends Migration
             $table->text('content');
             $table->integer('rating');
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('product_id')->unsigned();
+            $table->string('owner_type');
+            $table->bigInteger('owner_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
