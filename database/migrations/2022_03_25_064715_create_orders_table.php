@@ -17,8 +17,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id('id');
             $table->string('status');
-            $table->integer('address_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->unsignedBigInteger('address_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('address_id')->references('id')->on('addresses');

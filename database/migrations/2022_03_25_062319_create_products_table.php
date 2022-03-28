@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->id('id');
             $table->string('name');
             $table->integer('price');
-            $table->integer('brand_id')->unsigned();
+            $table->unsignedBigInteger('brand_id');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('brand_id')->references('id')->on('brands');

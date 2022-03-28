@@ -16,7 +16,7 @@ class CreateFeatureValuesTable extends Migration
     {
         Schema::create('feature_values', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('feature_id')->unsigned();
+            $table->bigInteger('feature_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('feature_id')->references('id')->on('features');
