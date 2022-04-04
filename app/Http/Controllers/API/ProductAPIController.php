@@ -19,7 +19,7 @@ class ProductAPIController extends AppBaseController
 {
     /**
      * @param Request $request
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      *
      * @SWG\Get(
      *      path="/products",
@@ -51,7 +51,7 @@ class ProductAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = Product::query();
+        $query = Product::query()->with('brand');
 
         if ($request->get('skip')) {
             $query->skip($request->get('skip'));

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Brand;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
@@ -18,9 +19,7 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'price' => $this->price,
-            'brand_id' => $this->brand_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'brand' => new BrandResource($this->whenLoaded('brand')),
         ];
     }
 }

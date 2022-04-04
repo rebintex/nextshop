@@ -19,7 +19,7 @@ class CategoryAPIController extends AppBaseController
 {
     /**
      * @param Request $request
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      *
      * @SWG\Get(
      *      path="/categories",
@@ -108,7 +108,7 @@ class CategoryAPIController extends AppBaseController
      */
     public function store(CreateCategoryAPIRequest $request)
     {
-        $input = $request->all();
+        $input = $request->validated();
 
         /** @var Category $category */
         $category = Category::create($input);
