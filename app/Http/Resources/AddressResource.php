@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AddressResource extends JsonResource
@@ -17,9 +18,9 @@ class AddressResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'user_id' => $this->user_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'latitude' => $this->lat,
+            'longitude' => $this->lng,
+            'user' => new UserResource($this->user),
         ];
     }
 }

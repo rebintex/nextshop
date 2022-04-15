@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Resources\CategoryResource;
+use PaymentSystem;
 use Response;
 
 /**
@@ -49,8 +50,10 @@ class CategoryAPIController extends AppBaseController
      *      )
      * )
      */
-    public function index(Request $request)
+    public function index(Request $request, PaymentSystem $paymentSystem)
     {
+
+        $paymentSystem->pay(100);
         $query = Category::query();
 
         if ($request->get('skip')) {
@@ -61,6 +64,8 @@ class CategoryAPIController extends AppBaseController
         }
 
         $categories = $query->get();
+
+        app(\Calculator::class);
 
          return $this->sendResponse(
              CategoryResource::collection($categories),

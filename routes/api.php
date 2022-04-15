@@ -23,9 +23,6 @@ Route::post('login', function (Request $request) {
    return auth()->user()->createToken('auth')->plainTextToken;
 });
 
-Route::apiResource('categories', \App\Http\Controllers\API\CategoryAPIController::class);
-Route::apiResource('products', \App\Http\Controllers\API\ProductAPIController::class);
-
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user', function (Request $request) {

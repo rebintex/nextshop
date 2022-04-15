@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind(\PaymentSystem::class, \Payme::class);
+
+        $this->app->bind(\Calculator::class, function () {
+            return new \Calculator(1,2);
+        });
     }
 }

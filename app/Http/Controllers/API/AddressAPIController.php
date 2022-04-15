@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateAddressAPIRequest;
 use App\Http\Requests\API\UpdateAddressAPIRequest;
 use App\Models\Address;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Resources\AddressResource;
@@ -49,7 +50,7 @@ class AddressAPIController extends AppBaseController
      *      )
      * )
      */
-    public function index(Request $request)
+    public function index(Request $request) : JsonResponse
     {
         $query = Address::query();
 
@@ -61,6 +62,8 @@ class AddressAPIController extends AppBaseController
         }
 
         $addresses = $query->get();
+
+        return response()->json(Address::all());
 
          return $this->sendResponse(
              AddressResource::collection($addresses),
@@ -112,6 +115,8 @@ class AddressAPIController extends AppBaseController
 
         /** @var Address $address */
         $address = Address::create($input);
+
+        return response()->json(Adress::all());
 
         return $this->sendResponse(
              new AddressResource($address),
